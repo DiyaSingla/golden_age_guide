@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "959806624634",
+    "project_id": "elderlycare-4d738",
+    "storage_bucket": "elderlycare-4d738.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959806624634:android:020b68ecdf84cf28203cc3",
+        "android_client_info": {
+          "package_name": "com.innervesummerofcode.goldenageguide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnVPVxf-BomSsKK_Tqn6cjQ6iTRyj_cZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
