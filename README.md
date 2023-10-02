@@ -6,7 +6,7 @@ Golden Age Guide is a comprehensive application designed to cater to the needs o
 
 ## Purpose:
 
-The aim is to develop a one-stop application for senior citizens to get all they require in one place, be it articles, songs, activities, connectivity, or medical assistance. The app aims to address the unique needs of senior citizens and enhance their quality of life by offering a set of features that include health tracking, access to educational resources, entertainment options, emergency assistance, user profiles, and more.
+The aim is to develop a one-stop application for senior citizens to get all they require in one place, be it articles, songs, activities, connectivity, or medical assistance. The app aims to address the unique needs of senior citizens and enhance their quality of life by offering a set of features that include health tracking, access to educational resources, entertainment options, emergency assistance, user profiles, and more. [Demo Video](https://drive.google.com/file/d/1--mF_qGHP5iF2VdzJDLnhERs5v2sDwxM/view?usp=sharing)
 
 ## Features:
 
@@ -15,9 +15,8 @@ The aim is to develop a one-stop application for senior citizens to get all they
     - Allows users to log in and out of the application securely.
 
 2. **Engaging Dashboard**
-    - Shows Thought of the Day
-    - Users can like/dislike the thought.
-    - A bunch of holistic activities such as watering plants and calling grandchildren.
+    - Shows Thought of the Day and the users can like/dislike the thought.
+    - A bunch of holistic activities such as watering plants and calling grandchildren are shown to engage the users.
 
 3. **Health Tracking:**
     - Monitors vital signs and health-related information.
