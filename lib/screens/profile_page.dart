@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 
 import '../user_datamodel.dart';
 
-// void main() {
-//   final data = {
-//     'email': 'bob@example.com',
-//     'name': 'Bob',
-//     'age': '70',
-//     'gender': 'male',
-//     'address': 'Delhi',
-//     'ecName1': 'Robin',
-//     'ecNumber1': '123-456-7890',
-//     'ecName2': 'Robin',
-//     'ecNumber2': '123-456-7890',
-//     'allergies': ['Peanuts', 'Shellfish'],
-//     'medications': ['Medicine A', 'Medicine B'],
-//     'medicalConditions': ['High Blood Pressure', 'Diabetes']
-//   };
-//   runApp(MaterialApp(
-//     home: ProfilePage(user: data),
-//   ));
-//}
+void main() {
+  final data = {
+    'email': 'bob@example.com',
+    'name': 'Bob',
+    'age': '70',
+    'gender': 'male',
+    'address': 'Delhi',
+    'ecName1': 'Robin',
+    'ecNumber1': '123-456-7890',
+    'ecName2': 'Robin',
+    'ecNumber2': '123-456-7890',
+    'allergies': ['Peanuts', 'Shellfish'],
+    'medications': ['Medicine A', 'Medicine B'],
+    'medicalConditions': ['High Blood Pressure', 'Diabetes']
+  };
+  runApp(MaterialApp(
+    home: ProfilePage(user: data),
+  ));
+}
 
 class ProfilePage extends StatefulWidget {
   Map<String, dynamic> user;
@@ -77,7 +77,6 @@ class _ProfilePageState extends State<ProfilePage> {
     final imageURL = (genderController.text == 'Male')
         ? 'images/male.png'
         : 'images/female.png';
-    //final imageURL = 'images/female.png';
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
@@ -101,8 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.center, // Align content in the center
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 0, 0, 10.0),
@@ -241,6 +239,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ElevatedButton(
                           onPressed: () {
                             final user = User(
+                              id: widget.user['id'],
                               email: widget.user['email'],
                               name: nameController.text,
                               age: ageController.text,
@@ -327,7 +326,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String imagePath = '',
   }) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: bgcolor,
@@ -339,7 +338,7 @@ class _ProfilePageState extends State<ProfilePage> {
             offset: const Offset(0, 3),
           ),
         ],
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: (!isEditMode && imagePath != '')
           ? Row(
@@ -448,8 +447,10 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void saveUserProfile(User userProfile) {
-    const path = 'userProfiles/3v5aLssggEEfnSiPFSK3';
+  void saveUserProfile(
+    User userProfile,
+  ) {
+    String path = 'userProfiles/${userProfile.id}';
     FirebaseFirestore.instance.doc(path).update({
       'email': userProfile.email,
       'name': userProfile.name,

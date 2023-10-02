@@ -1,4 +1,5 @@
 class User {
+  String id;
   final String email;
   final String name;
   final String age;
@@ -13,6 +14,7 @@ class User {
   final List medicalConditions;
 
   User({
+    this.id = '',
     required this.email,
     required this.name,
     required this.age,

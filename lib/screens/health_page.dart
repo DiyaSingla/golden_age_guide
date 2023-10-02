@@ -298,7 +298,7 @@ class _HealthTileState extends State<HealthTile> {
           builder: (BuildContext context) {
             return TaskListDialog(
               category: widget.title,
-              onProgressUpdated: handleProgressUpdate, // Pass the callback
+              onProgressUpdated: handleProgressUpdate,
             );
           },
         );
@@ -307,7 +307,7 @@ class _HealthTileState extends State<HealthTile> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        color: widget.color, // Customize the card background color
+        color: widget.color,
         child: Column(
           children: [
             Row(
@@ -363,12 +363,6 @@ class _HealthTileState extends State<HealthTile> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: HealthStatusPage(),
-  ));
 }
 
 List<Task> Medications = [

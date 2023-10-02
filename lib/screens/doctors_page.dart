@@ -147,8 +147,6 @@ class CaseCard extends StatelessWidget {
       onTap: () async {
         final Uri uri = Uri.parse('tel:$phone');
 
-        // Check if the device can handle the call
-
         if (!await launchUrl(uri)) {
           await launchUrl(uri); // Make the first call
         } else {
@@ -158,7 +156,6 @@ class CaseCard extends StatelessWidget {
       child: Card(
         color: Colors.white,
         elevation: 1,
-        //shadowColor: Colors.deepPurpleAccent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: const BorderSide(
@@ -215,7 +212,7 @@ class CaseCard extends StatelessWidget {
               ),
             ],
           ),
-          trailing: const Icon(Icons.phone), // Add the forward arrow icon
+          trailing: const Icon(Icons.phone),
         ),
       ),
     );

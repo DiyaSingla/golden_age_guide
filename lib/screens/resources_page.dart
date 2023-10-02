@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: ResourcesPage(),
-  ));
-}
-
 class ResourcesPage extends StatelessWidget {
   const ResourcesPage({super.key});
 
@@ -28,7 +22,7 @@ class ResourcesPage extends StatelessWidget {
           children: [
             Container(
               decoration: const BoxDecoration(
-                color: Colors.red, // You can change the background color
+                color: Colors.red,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(70),
                 ),
@@ -80,8 +74,7 @@ class ResourcesPage extends StatelessWidget {
             CategorySection(
               title: 'Articles',
               icon: Icons.article,
-              bgColor: const Color.fromARGB(
-                  255, 203, 230, 251), // Different color for the category box
+              bgColor: const Color.fromARGB(255, 203, 230, 251),
               children: [
                 buildResourceCard(
                   title: 'Healthy Eating Habits for Old People',
@@ -114,8 +107,7 @@ class ResourcesPage extends StatelessWidget {
             CategorySection(
               title: 'Books',
               icon: Icons.book,
-              bgColor: const Color.fromARGB(
-                  255, 248, 206, 147), // Different color for the category box
+              bgColor: const Color.fromARGB(255, 248, 206, 147),
               children: [
                 buildResourceCard(
                   title:
@@ -149,8 +141,7 @@ class ResourcesPage extends StatelessWidget {
             CategorySection(
               title: 'Movies',
               icon: Icons.movie,
-              bgColor: const Color.fromARGB(
-                  255, 254, 178, 204), // Different color for the category box
+              bgColor: const Color.fromARGB(255, 254, 178, 204),
               children: [
                 buildResourceCard(
                   title: 'Sholay',
@@ -183,8 +174,7 @@ class ResourcesPage extends StatelessWidget {
             CategorySection(
               title: 'Music',
               icon: Icons.music_note,
-              bgColor: const Color.fromARGB(
-                  255, 235, 193, 242), // Different color for the category box
+              bgColor: const Color.fromARGB(255, 235, 193, 242),
               children: [
                 buildResourceCard(
                   title: 'Kishore Kumar',
@@ -217,8 +207,7 @@ class ResourcesPage extends StatelessWidget {
             CategorySection(
               title: 'Videos',
               icon: Icons.video_file,
-              bgColor: const Color.fromARGB(
-                  255, 206, 249, 208), // Different color for the category box
+              bgColor: const Color.fromARGB(255, 206, 249, 208),
               children: [
                 buildResourceCard(
                   title: 'Yoga for Senior Citizens',
@@ -274,9 +263,9 @@ Widget buildResourceCard({
             imageUrl,
             fit: BoxFit.cover,
             height: 150,
-            width: 150, // Set the width of the image
+            width: 150,
           ),
-          // Right: Content
+
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -328,7 +317,7 @@ class CategorySection extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.all(12),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30), // Adjust the radius as needed
+        borderRadius: BorderRadius.circular(30),
       ),
       color: bgColor,
       child: Column(
