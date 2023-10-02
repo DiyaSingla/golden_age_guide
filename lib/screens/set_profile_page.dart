@@ -10,13 +10,6 @@ class ProfileSetupPage extends StatefulWidget {
   _ProfileSetupPageState createState() => _ProfileSetupPageState();
 }
 
-void main() {
-  runApp(MaterialApp(
-      home: ProfileSetupPage(
-    email: "abc.com",
-  )));
-}
-
 class _ProfileSetupPageState extends State<ProfileSetupPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
