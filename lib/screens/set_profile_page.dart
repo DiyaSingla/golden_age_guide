@@ -10,9 +10,15 @@ class ProfileSetupPage extends StatefulWidget {
   _ProfileSetupPageState createState() => _ProfileSetupPageState();
 }
 
+void main() {
+  runApp(MaterialApp(
+      home: ProfileSetupPage(
+    email: "abc.com",
+  )));
+}
+
 class _ProfileSetupPageState extends State<ProfileSetupPage> {
   final _formKey = GlobalKey<FormState>();
-  //final List<String> genderOptions = ['Male', 'Female', 'Other'];
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
@@ -43,7 +49,14 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
-            child: ListView(children: [
+            child: ListView(children: <Widget>[
+              Center(
+                child: Image.asset(
+                  'images/profile.png',
+                  width: 150,
+                  height: 150,
+                ),
+              ),
               _buildSection(
                 title: 'Personal Information',
                 children: [
@@ -140,7 +153,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-                      if (value!.isEmpty) {
+                      if (value!.isEmpty && value.length == 10) {
                         return 'This field is required.';
                       }
                       return null;
@@ -150,17 +163,29 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                   TextFormField(
                     controller: _emergencyContactName2Controller,
                     decoration: const InputDecoration(
-                      labelText: 'Emergency Contact Name (2nd)',
+                      labelText: 'Emergency Contact Name (2nd)*',
                       border: OutlineInputBorder(),
                     ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'This field is required.';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 10), // Add space
                   TextFormField(
                     controller: _emergencyContactNumber2Controller,
                     decoration: const InputDecoration(
-                      labelText: 'Emergency Contact Number (2nd)',
+                      labelText: 'Emergency Contact Number (2nd)*',
                       border: OutlineInputBorder(),
                     ),
+                    validator: (value) {
+                      if (value!.isEmpty && value.length == 10) {
+                        return 'This field is required.';
+                      }
+                      return null;
+                    },
                   ),
                 ],
               ),
