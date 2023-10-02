@@ -52,7 +52,7 @@ The project is designed for mobile devices and can run on Android and iOS platfo
 2. Clone the project repository.
 3. Open the project in your preferred integrated development environment (IDE) for Flutter, such as Android Studio or Visual Studio Code.
 4. Install the project dependencies using the `flutter pub get` command.
-5. The api_key is provided in this link. Add this in line 45 of the chatbot_screen.dart file to access the chatbot.
+5. The api_key is provided in this [link](https://docs.google.com/document/d/1JxpDWTEcexQ9kfFaKHl8AWkLwayE3xu4ps4UEYI_-Ys/edit?usp=sharing). Add this in line 45 of the chatbot_screen.dart file to access the chatbot.
 6. Run the project on an emulator or physical device using the `flutter run` command.
 7. Test and interact with the application's various features, including authentication, health tracking, education, entertainment, emergency assistance, user profiles, chatbot, and connecting with doctors.
 8. You can sign up as a new user or use (diya@gmail.com/user@gmail.com, 123456) as the sigin credentials.
