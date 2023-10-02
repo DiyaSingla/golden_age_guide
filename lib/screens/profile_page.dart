@@ -341,7 +341,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
         borderRadius: BorderRadius.circular(10),
       ),
-      child: (imagePath != '')
+      child: (!isEditMode && imagePath != '')
           ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

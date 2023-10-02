@@ -44,14 +44,22 @@ class _TaskListDialogState extends State<TaskListDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Tasks for ${widget.category}'),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
+      backgroundColor: Color.fromARGB(255, 248, 239, 237),
+      title: Text(
+        '${widget.category}',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
       content: SingleChildScrollView(
         child: Column(
           children: tasks.asMap().entries.map((entry) {
             final index = entry.key;
             final task = entry.value;
             return CheckboxListTile(
-              title: Text(task.name),
+              title: Text(
+                '${(index + 1)}. ${task.name} ',
+                style: TextStyle(fontSize: 18),
+              ),
               value: task.isCompleted,
               onChanged: (value) {
                 setState(() {
@@ -66,7 +74,8 @@ class _TaskListDialogState extends State<TaskListDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text('Close'),
+          child: const Text('OK',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           onPressed: () {
             Navigator.of(context).pop();
           },

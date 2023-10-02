@@ -26,6 +26,8 @@ void main() {
 }
 
 class DashboardPage extends StatefulWidget {
+  Color clr = Colors.grey;
+  Color clr2 = Colors.grey;
   Map<String, dynamic> user;
   DashboardPage({super.key, required this.user});
   @override
@@ -149,9 +151,9 @@ class _DashboardPageState extends State<DashboardPage> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 0),
                     child: Text(
-                      'How are you feeling today?',
+                      "Thought of the day is: ",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -159,9 +161,9 @@ class _DashboardPageState extends State<DashboardPage> {
                   ),
                   // Yesterday's Report (Left-aligned)
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 16.0),
                     child: Text(
-                      "It is time to check your",
+                      "Find joy in the little things; they often lead to the biggest smiles",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -169,67 +171,59 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20.0, 10.0, 0, 16.0),
-                    child: Text(
-                      "Blood Pressure",
-                      style: TextStyle(
-                        fontSize: 18,
-                        //fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            widget.clr = Colors.green;
+                          });
+                        },
+                        customBorder: CircleBorder(),
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: widget.clr,
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.thumb_up,
+                              size: 32,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  // Check Now and Remind Me Later Buttons (Center-aligned)
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Check Now" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amberAccent.shade700,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minimumSize: const Size(
-                                150, 50), // Set the button's background color
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            widget.clr2 = const Color.fromARGB(255, 245, 20, 3);
+                          });
+                        },
+                        customBorder: CircleBorder(),
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: widget.clr2,
                           ),
-                          child: const Text(
-                            'Check Now',
-                            style: TextStyle(
-                              fontSize: 18,
+                          child: Center(
+                            child: Icon(
+                              Icons.thumb_down,
+                              size: 32,
                               color: Colors.white,
                             ),
                           ),
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Remind Me Later" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minimumSize: const Size(
-                                150, 50), // Set the button's background color
-                          ),
-                          child: const Text(
-                            'Remind Me Later',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+
                   const SizedBox(
                     height: 30,
                   ),
@@ -240,6 +234,7 @@ class _DashboardPageState extends State<DashboardPage> {
               height: 20,
             ),
             Card(
+              color: const Color.fromARGB(255, 202, 244, 240),
               margin: const EdgeInsets.all(14.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -252,7 +247,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(Icons.health_and_safety),
+                        Image.asset("images/meter.png"),
                         const Text(
                           "Health Report",
                           style: TextStyle(
@@ -271,85 +266,15 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                       ],
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Text(
                       "Check your Health Status- Signs and Reports!",
-                      style: TextStyle(
-                        fontSize: 16, // Increase text size
-                      ),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-            ),
-
-            Card(
-              margin: const EdgeInsets.all(14.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Did you go for \nyour morning walk today?",
-                      style: TextStyle(
-                        fontSize: 20, // Increase text size
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Check Now" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(200, 71, 11, 57),
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20), // Smaller button size
-                            ),
-                            minimumSize:
-                                const Size(120, 40), // Smaller button size
-                          ),
-                          child: const Text(
-                            'Yes I did',
-                            style: TextStyle(
-                              fontSize: 16, // Decrease button text size
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Remind Me Later" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20), // Smaller button size
-                            ),
-                            minimumSize:
-                                const Size(120, 40), // Smaller button size
-                          ),
-                          child: const Text(
-                            "No I didn't",
-                            style: TextStyle(
-                              fontSize: 16, // Decrease button text size
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),

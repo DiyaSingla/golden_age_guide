@@ -8,13 +8,13 @@ void main() {
 class Doctor {
   final String name;
   final String phone;
-  final String ratings;
+  final String specialization;
   final String location;
 
   Doctor({
     required this.name,
     required this.phone,
-    required this.ratings,
+    required this.specialization,
     required this.location,
   });
 }
@@ -35,61 +35,61 @@ class DoctorsListPage extends StatelessWidget {
     Doctor(
       name: 'Dr. A.K. Mathur',
       phone: '+1 (123) 456-7890',
-      ratings: '4/5',
+      specialization: 'Cardiologist',
       location: 'ABC Hospital',
     ),
     Doctor(
       name: 'Dr. Rajesh Gupta',
       phone: '+91 (456) 789-1230',
-      ratings: '4.5/5',
+      specialization: 'Gastroenterologist',
       location: 'XYZ Clinic',
     ),
     Doctor(
       name: 'Dr. Priya Sharma',
       phone: '+91 (789) 123-4567',
-      ratings: '4.8/5',
+      specialization: 'Pediatrician',
       location: 'PQR Hospital',
     ),
     Doctor(
       name: 'Dr. Ankit Patel',
       phone: '+91 (567) 890-1234',
-      ratings: '4.2/5',
+      specialization: 'Orthopedic Surgeon',
       location: 'LMN Clinic',
     ),
     Doctor(
       name: 'Dr. Nisha Verma',
       phone: '+91 (234) 567-8901',
-      ratings: '4.6/5',
+      specialization: 'Dermatologist',
       location: 'EFG Hospital',
     ),
     Doctor(
       name: 'Dr. Sanjay Singh',
       phone: '+91 (987) 654-3210',
-      ratings: '4.3/5',
+      specialization: 'Ophthalmologist',
       location: 'JKL Clinic',
     ),
     Doctor(
       name: 'Dr. Manisha Joshi',
       phone: '+91 (321) 654-9870',
-      ratings: '4.7/5',
+      specialization: 'Neurologist',
       location: 'RST Hospital',
     ),
     Doctor(
       name: 'Dr. Rahul Mehta',
       phone: '+91 (876) 543-2109',
-      ratings: '4.4/5',
+      specialization: 'ENT Specialist',
       location: 'UVW Clinic',
     ),
     Doctor(
       name: 'Dr. Pooja Singh',
       phone: '+91 (543) 210-9876',
-      ratings: '4.9/5',
+      specialization: 'Psychiatrist',
       location: 'HIJ Hospital',
     ),
     Doctor(
       name: 'Dr. Suresh Kumar',
       phone: '+91 (109) 876-5432',
-      ratings: '4.1/5',
+      specialization: 'Dentist',
       location: 'GHI Clinic',
     ),
   ];
@@ -110,17 +110,17 @@ class DoctorsListPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(12.0),
         child: ListView.builder(
           itemCount: doctors.length,
           itemBuilder: (context, index) {
-            final organization = doctors[index];
+            final doc = doctors[index];
 
             return CaseCard(
-                name: organization.name,
-                Ratings: organization.ratings,
-                phone: organization.phone,
-                location: organization.location);
+                name: doc.name,
+                specialization: doc.specialization,
+                phone: doc.phone,
+                location: doc.location);
           },
         ),
       ),
@@ -130,14 +130,14 @@ class DoctorsListPage extends StatelessWidget {
 
 class CaseCard extends StatelessWidget {
   final String name;
-  final String Ratings;
+  final String specialization;
   final String phone;
   final String location;
 
   const CaseCard(
       {super.key,
       required this.name,
-      required this.Ratings,
+      required this.specialization,
       required this.phone,
       required this.location});
 
@@ -166,7 +166,10 @@ class CaseCard extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          hoverColor: const Color.fromARGB(255, 231, 223, 255),
+          leading: Image.asset(
+            'images/doc.png',
+          ),
+          hoverColor: Color.fromARGB(255, 249, 166, 165),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -193,7 +196,7 @@ class CaseCard extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Location: $location',
+                'Specialization: $specialization',
                 style: const TextStyle(
                   fontSize: 16,
                 ),
@@ -202,7 +205,7 @@ class CaseCard extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                'Ratings: $Ratings',
+                'Location: $location',
                 style: const TextStyle(
                   fontSize: 16,
                 ),
