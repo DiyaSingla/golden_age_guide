@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+void main() {
+  runApp(ChatBotScreen());
+}
+
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
 
@@ -19,7 +23,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   void initState() {
     super.initState();
     _messages.add(Message(
-        text: "Hi, I am Silver Sage. How may I assist you?", isMe: false));
+        text: "Hi, I am Urban Assistant. How may I assist you?", isMe: false));
   }
 
   void onSendMessage() async {
@@ -31,7 +35,10 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       _messages.insert(0, message);
     });
 
-    String response = await sendMessage(message.text);
+    //String response = await sendMessage(message.text);
+    String response = message == 'hello'
+        ? "Hi, How may I help you?"
+        : "Your issue is our top priority. It is being forwarded to the concerned authority. You can check the status of your issue on your dashboard. It will be resolved at the earliest.";
 
     Message chatGpt = Message(text: response, isMe: false);
 
