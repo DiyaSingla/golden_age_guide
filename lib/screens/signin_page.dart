@@ -81,7 +81,7 @@ class _LoginState extends State<LoginPage> {
                   decoration: const InputDecoration(
                     labelText: "Enter Password",
                     icon: Icon(Icons.lock_outline),
-                    border: OutlineInputBorder(), // Add a border
+                    border: OutlineInputBorder(),
                   ),
                   controller: _passwordTextController,
                   obscureText: true,

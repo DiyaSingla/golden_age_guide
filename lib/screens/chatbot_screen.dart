@@ -97,9 +97,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             Container(
               decoration: BoxDecoration(
                 color: message.isMe
-                    ? const Color.fromARGB(255, 244, 193, 134)
-                    : const Color.fromARGB(
-                        255, 243, 150, 139), // Change colors as desired
+                    ? Color.fromARGB(255, 142, 245, 128)
+                    : Color.fromARGB(
+                        255, 10, 174, 131), // Change colors as desired
                 borderRadius: BorderRadius.circular(8),
               ),
               padding: const EdgeInsets.all(10),
@@ -124,6 +124,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ChatBot'),
+        backgroundColor: Colors.teal,
         foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

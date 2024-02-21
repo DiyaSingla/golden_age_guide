@@ -1,27 +1,81 @@
 # ISoC'23 App Dev Track: Golden Age Guide
 
-Golden Age Guide is designed to be a user-friendly mobile application, tailored for senior citizens. It aims to provide essential features and resources to help seniors lead a fulfilling and healthy life in their golden years. 
+## Project Overview:
 
-## Challenges
-The base project provides a login structure, and contributors are encouraged to implement the following key sections:
+Golden Age Guide is a comprehensive application designed to cater to the needs of senior citizens, providing them with a range of features to support their physical and emotional well-being as they age. It offers a secure and user-friendly environment for senior citizens to stay healthy, informed, connected, and entertained.
 
-- **Authentication, Login and Logout:** Implement a secure login system with email and password or other authentication methods.
-- **Health Tracking**: Monitor vital signs and health-related information.
-- **Education and Resources**: Access articles, videos, and resources on aging gracefully.
-- **Entertainment and Engagements**: Explore virtual communities, events, and activities.
-- **Emergency Assistance**: Utilize the SOS feature for immediate help.
-- **My Profile**: Set up and manage user profiles.
+## Purpose:
 
-## Additional Note to Contributors
+The aim is to develop a one-stop application for senior citizens to get all they require in one place, be it articles, songs, activities, connectivity, or medical assistance. The app aims to address the unique needs of senior citizens and enhance their quality of life by offering a set of features that include health tracking, access to educational resources, entertainment options, emergency assistance, user profiles, and more. [Demo Video](https://drive.google.com/file/d/1--mF_qGHP5iF2VdzJDLnhERs5v2sDwxM/view?usp=sharing)
 
-We appreciate your interest in contributing to the Golden Age Guide project! Your contributions play a vital role in making this application a valuable resource for senior citizens. Here are some important points to keep in mind as you embark on your journey as a contributor:
+## Features:
 
-- **Customization and Enhancement:** Feel free to customize and enhance the features within the scope of this project. Your creativity and innovation are highly encouraged. If you have ideas for new features or improvements, don't hesitate to share them with the community.
-- **User-Centric Design:** Remember that our target audience is senior citizens. When implementing features, prioritize user-friendliness, simplicity, and accessibility. The user interface should be intuitive and easy for seniors to navigate.
-- **Stay Within Project Scope:** While we welcome creative ideas, please ensure that your contributions align with the project's core purpose. Changes should benefit and support senior citizens in leading a fulfilling and healthy life.
-- **Collaboration and Communication:** Collaboration is at the heart of open-source development. Engage with other contributors, seek feedback, and offer assistance to fellow developers. Use our [Discord Community](https://discord.gg/vXwBDzba) section to share ideas and ask questions.
-- **Code Quality and Security:** Maintain high code quality and security standards. Follow best practices for coding, documentation, and security to ensure a reliable and safe user experience.
-- **Have Fun:** Last but not least, enjoy the journey of contributing to a meaningful project. Your efforts will make a positive impact on the lives of senior citizens.
+1. **Authentication, Login, and Logout:**
+    - Implements a secure login system with options for email and password authentication.
+    - Allows users to log in and out of the application securely.
 
- 
-Thank you for being a part of Innerve Summer Of Code community. Your dedication and contributions are valued!
+2. **Engaging Dashboard**
+    - Shows Thought of the Day and the users can like/dislike the thought.
+    - A bunch of holistic activities such as watering plants and calling grandchildren are shown to engage the users.
+
+3. **Health Tracking:**
+    - Monitors vital signs and health-related information.
+    - Provides tools to track medications, fitness, diet, and Check Up tasks.
+
+4. **Education and Entertainment:**
+    - Offers access to a library of articles, videos, and books on aging gracefully.
+    - Provides informative content to help users make informed health and lifestyle decisions.
+    - Allows users to access movies and songs.
+
+5. **Emergency Assistance:**
+    - Incorporates an SOS feature that enables users to request immediate emergency help.
+    - Connects users to emergency services or designated contacts.
+
+6. **My Profile:**
+    - Enables users to set up and manage their profiles.
+    - Provides a centralized location for users to update personal information, preferences, and emergency contacts.
+
+7. **Chatbot:**
+    - Includes a chatbot feature (named "Silver Sage") to answer questions, provide guidance, and engage in conversation with users.
+    - Enhances the user experience by offering information and companionship.
+    -Implemented using ChatGPT API.
+
+8. **Connect with Doctors:**
+    - Allows users to connect with medical professionals for remote consultations.
+    - Provides access to a list of doctors with their specialties and contact information.
+
+## How to Run the Project:
+
+The project is designed for mobile devices and can run on Android and iOS platforms. To run the project:
+1. Ensure you have Flutter installed on your development environment.
+2. Clone the project repository.
+3. Open the project in your preferred integrated development environment (IDE) for Flutter, such as Android Studio or Visual Studio Code.
+4. Install the project dependencies using the `flutter pub get` command.
+5. The api_key is provided in this [link](https://docs.google.com/document/d/1JxpDWTEcexQ9kfFaKHl8AWkLwayE3xu4ps4UEYI_-Ys/edit?usp=sharing). Add this in line 45 of the chatbot_screen.dart file to access the chatbot.
+6. Run the project on an emulator or physical device using the `flutter run` command.
+7. Test and interact with the application's various features, including authentication, health tracking, education, entertainment, emergency assistance, user profiles, chatbot, and connecting with doctors.
+8. You can sign up as a new user or use (diya@gmail.com/user@gmail.com, 123456) as the sigin credentials.
+
+## Issues Solved:
+
+The following issues were solved during the development of the project, both those provided by the team and additional issues identified and resolved independently:
+
+**Provided Issues:**
+
+1. **Authentication, Login, and Logout:** Implemented a secure login system with email and password authentication using Firestore.
+
+2. **Health Tracking:** Developed features for monitoring vital signs and health-related information, including medication tracking.
+
+3. **Education and Resources:** Created a content library for articles, videos, and books on aging gracefully.
+
+4. **Entertainment and Engagements:** Implemented features for exploring movies, songs, and activities.
+
+5. **Emergency Assistance:** Integrated an SOS feature for immediate help and connections to emergency services.
+
+6. **My Profile:** Enabled users to set up and manage their profiles using Firestore.
+
+**Additional Issues:**
+
+7. **Chatbot:** Developed and integrated a chatbot named "Silver Sage" to provide information and companionship.
+
+8. **Connect with Doctors:** Added a feature to connect users with medical professionals for remote consultations.

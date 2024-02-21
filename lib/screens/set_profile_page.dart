@@ -12,7 +12,6 @@ class ProfileSetupPage extends StatefulWidget {
 
 class _ProfileSetupPageState extends State<ProfileSetupPage> {
   final _formKey = GlobalKey<FormState>();
-  //final List<String> genderOptions = ['Male', 'Female', 'Other'];
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
@@ -29,6 +28,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
   final TextEditingController _medicalConditionsController =
       TextEditingController();
   String _selectedGender = "Male";
+  String docId = '';
 
   @override
   @override
@@ -42,7 +42,14 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
-            child: ListView(children: [
+            child: ListView(children: <Widget>[
+              Center(
+                child: Image.asset(
+                  'images/profile.png',
+                  width: 150,
+                  height: 150,
+                ),
+              ),
               _buildSection(
                 title: 'Personal Information',
                 children: [
@@ -139,7 +146,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-                      if (value!.isEmpty) {
+                      if (value!.isEmpty && value.length == 10) {
                         return 'This field is required.';
                       }
                       return null;
@@ -149,17 +156,29 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                   TextFormField(
                     controller: _emergencyContactName2Controller,
                     decoration: const InputDecoration(
-                      labelText: 'Emergency Contact Name (2nd)',
+                      labelText: 'Emergency Contact Name (2nd)*',
                       border: OutlineInputBorder(),
                     ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'This field is required.';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 10), // Add space
                   TextFormField(
                     controller: _emergencyContactNumber2Controller,
                     decoration: const InputDecoration(
-                      labelText: 'Emergency Contact Number (2nd)',
+                      labelText: 'Emergency Contact Number (2nd)*',
                       border: OutlineInputBorder(),
                     ),
+                    validator: (value) {
+                      if (value!.isEmpty && value.length == 10) {
+                        return 'This field is required.';
+                      }
+                      return null;
+                    },
                   ),
                 ],
               ),
@@ -192,7 +211,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                 ],
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     final user = User(
                       email: widget.email,
@@ -209,8 +228,10 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                       medicalConditions:
                           _medicalConditionsController.text.split(','),
                     );
+                    await saveUserProfile(user);
 
                     Map<String, dynamic> data = {
+                      'id': docId,
                       'email': widget.email,
                       'name': _nameController.text,
                       'age': _ageController.text,
@@ -225,8 +246,8 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                       'medicalConditions':
                           _medicalConditionsController.text.split(','),
                     };
-                    // Form is valid, save user's profile
-                    saveUserProfile(user);
+                    // If Form is valid, save user's profile
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -267,24 +288,34 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
     );
   }
 
-  void saveUserProfile(User userProfile) {
-    FirebaseFirestore.instance.collection('userProfiles').add({
-      'email': userProfile.email,
-      'name': userProfile.name,
-      'age': userProfile.age,
-      'gender': userProfile.gender,
-      'address': userProfile.address,
-      'ecName1': userProfile.ecName1,
-      'ecNumber1': userProfile.ecNumber1,
-      'ecName2': userProfile.ecName2,
-      'ecNumber2': userProfile.ecNumber2,
-      'allergies': userProfile.allergies,
-      'medications': userProfile.medications,
-      'medicalConditions': userProfile.medicalConditions,
-    }).then((value) {
+  Future<void> saveUserProfile(User userProfile) async {
+    try {
+      final DocumentReference docRef =
+          await FirebaseFirestore.instance.collection('userProfiles').add({
+        'email': userProfile.email,
+        'name': userProfile.name,
+        'age': userProfile.age,
+        'gender': userProfile.gender,
+        'address': userProfile.address,
+        'ecName1': userProfile.ecName1,
+        'ecNumber1': userProfile.ecNumber1,
+        'ecName2': userProfile.ecName2,
+        'ecNumber2': userProfile.ecNumber2,
+        'allergies': userProfile.allergies,
+        'medications': userProfile.medications,
+        'medicalConditions': userProfile.medicalConditions,
+      });
+
+      // Get the auto-generated Firestore document ID
+      docId = docRef.id;
+
+      // Update the 'id' field in the document with the generated ID
+      await docRef.update({'id': docId});
+
       // Successfully saved data to Firestore
-    }).catchError((error) {
+    } catch (error) {
       // Handle errors, e.g., Firestore is unreachable
-    });
+      print('Error: $error');
+    }
   }
 }

@@ -7,25 +7,27 @@ import 'package:goldenageguide/screens/signin_page.dart';
 import 'package:goldenageguide/screens/sos_page.dart';
 import 'profile_page.dart';
 
-void main() {
-  final data = {
-    'email': 'bob@example.com',
-    'name': 'Bob',
-    'age': '70',
-    'gender': 'male',
-    'address': 'Delhi',
-    'ecName1': 'Robin',
-    'ecNumber1': '123-456-7890',
-    'ecName2': 'Robin',
-    'ecNumber2': '123-456-7890',
-    'allergies': ['Peanuts', 'Shellfish'],
-    'medications': ['Medicine A', 'Medicine B'],
-    'medicalConditions': ['High Blood Pressure', 'Diabetes']
-  };
-  runApp(MaterialApp(home: DashboardPage(user: data)));
-}
+// void main() {
+//   final data = {
+//     'email': 'bob@example.com',
+//     'name': 'Bob',
+//     'age': '70',
+//     'gender': 'male',
+//     'address': 'Delhi',
+//     'ecName1': 'Robin',
+//     'ecNumber1': '123-456-7890',
+//     'ecName2': 'Robin',
+//     'ecNumber2': '123-456-7890',
+//     'allergies': ['Peanuts', 'Shellfish'],
+//     'medications': ['Medicine A', 'Medicine B'],
+//     'medicalConditions': ['High Blood Pressure', 'Diabetes']
+//   };
+//   runApp(MaterialApp(home: DashboardPage(user: data)));
+// }
 
 class DashboardPage extends StatefulWidget {
+  Color clr = Colors.grey;
+  Color clr2 = Colors.grey;
   Map<String, dynamic> user;
   DashboardPage({super.key, required this.user});
   @override
@@ -43,18 +45,19 @@ class _DashboardPageState extends State<DashboardPage> {
   ];
 
   List<String> tasks = [
-    'Morning Walk',
-    'Check Blood Pressure',
+    'Listen Music',
+    'Meditate',
     'Call Grandchildren',
-    'Take Medicines',
+    'Spend Time with Spouse',
     'Water Plants'
   ];
-  List<String> time = [
-    '7:00 am - 7:30 am',
-    '10:00 am',
-    '3:00 pm',
-    "4:00 pm",
-    "6:00 pm"
+
+  List<String> sub = [
+    'Relaxing music is always a good idea',
+    'Savour moments of Peace',
+    'Tell them how much you love them',
+    'Laugh, Singh and Dance Together',
+    'Pamper your plants'
   ];
 
   void _onTaskCompleted(int index) {
@@ -122,18 +125,16 @@ class _DashboardPageState extends State<DashboardPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Top Card/Tile
             Container(
               decoration: const BoxDecoration(
-                color: Colors.red, // You can change the background color
+                color: Colors.red,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(70),
                 ),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Align left
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // User Name (Left-aligned)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16.0, 16.0, 0, 0),
                     child: Text(
@@ -145,11 +146,21 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                   ),
-                  // Task Reminder (Left-aligned)
                   const Padding(
                     padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 0),
                     child: Text(
-                      'How are you feeling today?',
+                      "Thought of the day is: ",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 16.0),
+                    child: Text(
+                      "Find joy in the little things; they often lead to the biggest smiles",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -157,78 +168,56 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                   ),
-                  // Yesterday's Report (Left-aligned)
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 0),
-                    child: Text(
-                      "It is time to check your",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20.0, 10.0, 0, 16.0),
-                    child: Text(
-                      "Blood Pressure",
-                      style: TextStyle(
-                        fontSize: 18,
-                        //fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
-                      ),
-                    ),
-                  ),
-                  // Check Now and Remind Me Later Buttons (Center-aligned)
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Check Now" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amberAccent.shade700,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minimumSize: const Size(
-                                150, 50), // Set the button's background color
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            widget.clr = Colors.green;
+                          });
+                        },
+                        customBorder: CircleBorder(),
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: widget.clr,
                           ),
-                          child: const Text(
-                            'Check Now',
-                            style: TextStyle(
-                              fontSize: 18,
+                          child: const Center(
+                            child: Icon(
+                              Icons.thumb_up,
+                              size: 32,
                               color: Colors.white,
                             ),
                           ),
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Remind Me Later" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minimumSize: const Size(
-                                150, 50), // Set the button's background color
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            widget.clr2 = const Color.fromARGB(255, 245, 20, 3);
+                          });
+                        },
+                        customBorder: const CircleBorder(),
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: widget.clr2,
                           ),
-                          child: const Text(
-                            'Remind Me Later',
-                            style: TextStyle(
-                              fontSize: 18,
+                          child: const Center(
+                            child: Icon(
+                              Icons.thumb_down,
+                              size: 32,
                               color: Colors.white,
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 30,
@@ -240,6 +229,7 @@ class _DashboardPageState extends State<DashboardPage> {
               height: 20,
             ),
             Card(
+              color: const Color.fromARGB(255, 202, 244, 240),
               margin: const EdgeInsets.all(14.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -252,7 +242,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(Icons.health_and_safety),
+                        Image.asset("images/meter.png"),
                         const Text(
                           "Health Report",
                           style: TextStyle(
@@ -271,85 +261,15 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                       ],
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Text(
                       "Check your Health Status- Signs and Reports!",
-                      style: TextStyle(
-                        fontSize: 16, // Increase text size
-                      ),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-            ),
-
-            Card(
-              margin: const EdgeInsets.all(14.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Did you go for \nyour morning walk today?",
-                      style: TextStyle(
-                        fontSize: 20, // Increase text size
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Check Now" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(200, 71, 11, 57),
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20), // Smaller button size
-                            ),
-                            minimumSize:
-                                const Size(120, 40), // Smaller button size
-                          ),
-                          child: const Text(
-                            'Yes I did',
-                            style: TextStyle(
-                              fontSize: 16, // Decrease button text size
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Handle "Remind Me Later" button tap
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20), // Smaller button size
-                            ),
-                            minimumSize:
-                                const Size(120, 40), // Smaller button size
-                          ),
-                          child: const Text(
-                            "No I didn't",
-                            style: TextStyle(
-                              fontSize: 16, // Decrease button text size
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
@@ -360,7 +280,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Today's Tasks",
+                    "Activities for You",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -371,7 +291,6 @@ class _DashboardPageState extends State<DashboardPage> {
                   // Timeline and Task Items
                   Row(
                     children: [
-                      // Timeline (Vertical Line with Circles)
                       Column(
                         children: completedTasks.asMap().entries.map((entry) {
                           final index = entry.key;
@@ -379,22 +298,18 @@ class _DashboardPageState extends State<DashboardPage> {
                           return Column(
                             children: [
                               Container(
-                                width: 16, // Circle diameter
-                                height: 16, // Circle diameter
+                                width: 16,
+                                height: 16,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: completed
-                                      ? Colors.green
-                                      : Colors.red, // Circle color
+                                  color: completed ? Colors.green : Colors.red,
                                 ),
                               ),
                               if (index < completedTasks.length - 1)
                                 Container(
-                                  width: 2, // Line width
-                                  height: 105, // Line height
-                                  color: completed
-                                      ? Colors.green
-                                      : Colors.grey, // Line color
+                                  width: 2,
+                                  height: 105,
+                                  color: completed ? Colors.green : Colors.grey,
                                 ),
                             ],
                           );
@@ -418,11 +333,14 @@ class _DashboardPageState extends State<DashboardPage> {
                                   elevation: 2,
                                   margin: const EdgeInsets.only(
                                     top: 8.0,
-                                    right: 16.0,
+                                    right: 12.0,
                                     bottom: 8.0,
-                                    left: 16.0,
+                                    left: 12.0,
                                   ),
                                   child: ListTile(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                     contentPadding: const EdgeInsets.all(16.0),
                                     title: Text(
                                       tasks[index],
@@ -432,10 +350,10 @@ class _DashboardPageState extends State<DashboardPage> {
                                       ),
                                     ),
                                     subtitle: Text(
-                                      time[index],
+                                      sub[index],
                                       style: const TextStyle(
                                           color: Color.fromARGB(255, 3, 31, 54),
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontSize: 16),
                                     ),
                                     tileColor: taskColors[index],

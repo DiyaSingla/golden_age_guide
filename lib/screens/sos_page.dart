@@ -33,14 +33,14 @@ class _SOSPageState extends State<SOSPage> {
     final String contact1Number = widget.user['ecNumber1'];
     final String contact2Number = widget.user['ecNumber2'];
 
-    final Uri uri1 = Uri.parse('tel:8929401833');
+    final Uri uri1 = Uri.parse('tel:$contact1Number');
     final Uri uri2 = Uri.parse('tel:$contact2Number');
 
     // Check if the device can handle the call
 
     if (!await launchUrl(uri1) && await launchUrl(uri2)) {
-      await launchUrl(uri1); // Make the first call
-      await launchUrl(uri2); // Make the second call
+      await launchUrl(uri1);
+      await launchUrl(uri2);
     } else {
       print('Error: Could not make the call.');
     }
@@ -49,7 +49,7 @@ class _SOSPageState extends State<SOSPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green, // Set the green background
+      backgroundColor: Colors.green,
       appBar: AppBar(
         backgroundColor: Colors.green,
         elevation: 0,

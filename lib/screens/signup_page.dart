@@ -45,34 +45,30 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(
                   height: 40,
                 ),
-                // Use InputDecoration for text fields
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Enter Email",
                     icon: Icon(Icons.email),
                     border: OutlineInputBorder(),
                   ),
-                  // Use controller property to bind the controller
                   controller: _emailTextController,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                // Use InputDecoration for text fields
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Enter Password",
                     icon: Icon(Icons.lock_outline),
                     border: OutlineInputBorder(),
                   ),
-                  // Use controller property to bind the controller
+
                   controller: _passwordTextController,
                   obscureText: true, // Hide the password
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                // Use a custom button widget for reusability
                 signInSignUpButton(context, false, () async {
                   final userExists =
                       await doesUserExist(_emailTextController.text);
